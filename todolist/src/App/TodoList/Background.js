@@ -7,6 +7,7 @@ const Background = styled(Paper)`
   margin: 16px;
   padding: 16px;
   box-sizing: border-box;
+  border-radius: 10px;
 `;
 
 export default Background;

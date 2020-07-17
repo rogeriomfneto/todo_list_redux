@@ -1,29 +1,36 @@
-import { ADD_TODO, DELETE_TODO, CHECK_TODO, UNCHECK_TODO } from "./constants";
+import { ADD_TODO, DELETE_TODO, CHECK_TODO, UNCHECK_TODO, SET_TITLE } from "./constants";
 
-function addTodo(name) {
+export function addTodo(name) {
   return {
     type: ADD_TODO,
     name,
   };
 }
 
-function deleteTodo(id) {
+export function deleteTodo(id) {
   return {
     type: DELETE_TODO,
     id,
   };
 }
 
-function checkTodo(id) {
+export function checkTodo(id) {
   return {
     type: CHECK_TODO,
     id,
   };
 }
 
-function uncheckTodo(id) {
+export function uncheckTodo(id) {
   return {
     type: UNCHECK_TODO,
     id,
+  };
+}
+
+export function setTitle(title) {
+  return {
+    type: SET_TITLE,
+    title,
   };
 }

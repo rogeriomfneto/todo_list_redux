@@ -1,6 +1,11 @@
-import { ADD_TODO, DELETE_TODO, CHECK_TODO, UNCHECK_TODO } from "./constants";
+import { ADD_TODO, DELETE_TODO, CHECK_TODO, UNCHECK_TODO, SET_TITLE } from "./constants";
 
-const defaultState = { index: 0 };
+const DEFAULT_TITLE = 'To Do List';
+
+const defaultState = { 
+  index: 0,
+  title: DEFAULT_TITLE,
+};
 
 function createTodo(name, index) {
   return {
@@ -37,6 +42,12 @@ function handleCheckTodo(state, action, check) {
   return newState;
 }
 
+function handleSetTitle(state, action) {
+  const newTitle = action.title;
+  if (newTitle) return { ...state, title: newTitle};
+  return state;
+}
+
 function reducer(state = defaultState, action) {
   switch (action.type) {
     case ADD_TODO:
@@ -47,6 +58,8 @@ function reducer(state = defaultState, action) {
       return handleCheckTodo(state, action, true);
     case UNCHECK_TODO:
       return handleCheckTodo(state, action, false);
+    case SET_TITLE:
+      return handleSetTitle(state, action);
     default:
       return state;
   }
