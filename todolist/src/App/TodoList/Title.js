@@ -5,8 +5,6 @@ import TextField from "@material-ui/core/TextField";
 
 import { setTitle } from "../actions";
 
-const DEFAULT_TITLE = 'To Do List';
-
 class Title extends React.Component {
   state = {
     editName: false,
@@ -37,7 +35,7 @@ class Title extends React.Component {
     return (
       <React.Fragment>
         {!this.state.editName &&
-          <Typography variant="h5" component="h1" onClick={this.toggleEditName}>
+          <Typography variant="h5" component="h1" onClick={this.toggleEditName} gutterBottom>
             {this.props.title}
           </Typography>
         } 

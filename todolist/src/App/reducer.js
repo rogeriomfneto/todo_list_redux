@@ -1,10 +1,17 @@
-import { ADD_TODO, DELETE_TODO, CHECK_TODO, UNCHECK_TODO, SET_TITLE } from "./constants";
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  CHECK_TODO,
+  UNCHECK_TODO,
+  SET_TITLE,
+} from "./constants";
 
-const DEFAULT_TITLE = 'To Do List';
+const DEFAULT_TITLE = "To Do List";
 
-const defaultState = { 
+const defaultState = {
   index: 0,
   title: DEFAULT_TITLE,
+  todos: {},
 };
 
 function createTodo(name, index) {
@@ -18,10 +25,13 @@ function createTodo(name, index) {
 function handleAddTodo(state, action) {
   const index = state.index;
   const name = action.name;
+  if (!name) return state;
   const newTodo = createTodo(name, index.toString());
+  const newTodos = { ...state.todos };
+  newTodos[newTodo.id] = newTodo;
   return {
     ...state,
-    [newTodo.id]: newTodo,
+    todos: newTodos,
     index: index + 1,
   };
 }
@@ -29,22 +39,20 @@ function handleAddTodo(state, action) {
 function handleDeleteTodo(state, action) {
   const newState = { ...state };
   const id = action.id;
-  delete newState[id];
+  delete newState.todos[id];
   return newState;
 }
 
 function handleCheckTodo(state, action, check) {
   const id = action.id;
   const newState = { ...state };
-  if (newState.hasOwnProperty(id)) {
-    newState[id].checked = check;
-  }
+  newState.todos[id].checked = check;
   return newState;
 }
 
 function handleSetTitle(state, action) {
   const newTitle = action.title;
-  if (newTitle) return { ...state, title: newTitle};
+  if (newTitle) return { ...state, title: newTitle };
   return state;
 }
 
