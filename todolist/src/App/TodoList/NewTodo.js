@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Typography } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 

@@ -1,4 +1,11 @@
-import { ADD_TODO, DELETE_TODO, CHECK_TODO, UNCHECK_TODO, SET_TITLE } from "./constants";
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  CHECK_TODO,
+  UNCHECK_TODO,
+  SET_TITLE,
+  UPLOAD_LIST,
+} from "./constants";
 
 export function addTodo(name) {
   return {
@@ -32,5 +39,12 @@ export function setTitle(title) {
   return {
     type: SET_TITLE,
     title,
+  };
+}
+
+export function uploadList(newList) {
+  return {
+    type: UPLOAD_LIST,
+    newList,
   };
 }

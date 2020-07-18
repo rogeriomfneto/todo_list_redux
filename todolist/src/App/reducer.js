@@ -4,6 +4,7 @@ import {
   CHECK_TODO,
   UNCHECK_TODO,
   SET_TITLE,
+  UPLOAD_LIST,
 } from "./constants";
 
 const DEFAULT_TITLE = "To Do List";
@@ -56,6 +57,12 @@ function handleSetTitle(state, action) {
   return state;
 }
 
+function handleUploadList(state, action) {
+  const newList = action.newList;
+  const newState = JSON.parse(newList);
+  return newState;
+}
+
 function reducer(state = defaultState, action) {
   switch (action.type) {
     case ADD_TODO:
@@ -68,6 +75,8 @@ function reducer(state = defaultState, action) {
       return handleCheckTodo(state, action, false);
     case SET_TITLE:
       return handleSetTitle(state, action);
+    case UPLOAD_LIST:
+      return handleUploadList(state, action);
     default:
       return state;
   }
